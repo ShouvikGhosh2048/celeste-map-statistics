@@ -77,7 +77,7 @@ for sheet = 3:7
                     # ZipFile.Reader may throw an error due to https://github.com/fhs/ZipFile.jl/issues/73
                     zipfile = ZipFile.Reader(zipfilepath)
                 catch
-                    rm(zipfilepath)
+                    println("Could not read the zip file.")
                     continue
                 end
                 for f in zipfile.files
