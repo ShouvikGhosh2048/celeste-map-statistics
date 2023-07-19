@@ -62,7 +62,24 @@ for sheet = 3:7
 
                 zipfilepath = joinpath("Mods", file["_sFile"])
                 println(string("Downloading ", file["_sFile"]))
-                Downloads.download(file["_sDownloadUrl"], zipfilepath)
+
+                downloaded = false
+                for i = 1:3
+                    try
+                        Downloads.download(file["_sDownloadUrl"], zipfilepath)
+                        downloaded = true
+                        break
+                    catch
+                        if i < 3
+                            println("Download failed - retrying")
+                        end
+                    end
+                end
+                if !downloaded
+                    println("Couldn't download ", file["_sFile"])
+                    continue
+                end
+
                 println(string("Downloaded ", file["_sFile"]))
 
                 # Modified version of unzip from

@@ -21,5 +21,6 @@ For distances, I consider the euclidean distance (straight line path) between th
 ## Limitations
 - I don't currently consider other obstacles/entities.
 - Certains maps may have a path from the start to end, but my method doesn't detect them - this can occur when a player performs an action which causes the spinners to change their position - my method doesn't consider this and so BFS may not give us a path.
+- The start/end detected can sometimes be wrong - the method used isn't 100% accurate.
 - I don't consider the game physics.
 - The current BFS distance isn't the best distance choice - it doesn't consider diagonal movement.
